@@ -1,0 +1,190 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+    color: #0366d6;
+}
+
+.imageThumbnail {
+    height: auto;
+    width: 150px;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    /*color: white;*/
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+}
+
+#catalogIndexTable {
+    font-size: 1.1em;
+}
+
+    #catalogIndexTable th{
+        text-align: center;
+    }
+
+    #catalogIndexTable td {
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    #catalogIndexTable tr:hover {
+        box-shadow: 4px 4px 4px 4px #00000040;
+        color: black;
+    }
+
+.table td[id="paginationDataCell"] {
+    border-top: none;
+}
+
+.branchInfo {
+    padding-bottom: 30px;
+}
+
+.detailInfo {
+    padding: 10px;
+    font-size: 1.3em;
+    color: #555;
+}
+
+.detailHeading {
+    padding: 10px;
+}
+
+#checkoutHistoryTable tr:hover {
+    background-color: grey;
+}
+
+#currentHoldsTable tr:hover {
+    background-color: grey;
+}
+
+.imageCell {
+    width: 128px;
+    padding: 5px;
+    border-radius: 11px;
+}
+
+#itemTitle {
+    font-size: 2.3em;
+}
+
+#itemAuthor {
+    font-size: 1.6em;
+}
+
+#itemStatus {
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+#itemType {
+    font-size: 1.6em;
+    color: #888;
+}
+
+.itemLabel {
+    font-weight: bold;
+}
+
+
+.itemValue {
+    font-size: 0.8em;
+}
+
+.strongTd {
+    font-weight: bold;
+}
+
+.navbar {
+    background-color: white;
+    
+}
+
+#patronHasFees {
+    color: #c62222;
+    font-weight: bold;
+}
+
+#patronNoFees {
+    color: #2f6fc7;
+    font-weight: bold;
+}
+
+.container .whiteLine {
+    border-top: 1px solid white;
+}
+
+@media(max-width: 767px) {
+    #patronDetailAssetsCheckedOut {
+        margin-top: 20px;
+    }
+
+    .patronDetail {
+        text-align: center;
+    }
+}

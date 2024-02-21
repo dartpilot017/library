@@ -1,0 +1,551 @@
+﻿@inject SignInManager<User> signInManager
+
+@{ ViewBag.Title = "Library Management System"; }
+<div class="w-100 overflow-hidden">
+    <div class=" mt-4 mb-4">
+        <img src="~/images/Slideshow-1.jpg" alt="Library img" class="h-mobile-" style="height:456px; width:100% !important;">
+    </div>
+    <div class="w-100  ">
+        <div class="mx-auto row justify-content-between col-sm-11 ">
+            @if (!signInManager.IsSignedIn(User)
+|| (signInManager.IsSignedIn(User) && User.IsInRole("Patron") && !User.IsInRole("Admin") && !User.IsInRole("Employee"))
+|| (signInManager.IsSignedIn(User) && !User.IsInRole("Admin") && !User.IsInRole("Employee") && !User.IsInRole("Patron")))
+            {
+<div class="col-sm-4">
+    <div class="button-0 mt-3 bg-blue  ">
+        <a asp-controller="Catalog" asp-action="Index" asp-append-version="true" class="text-decoration-none w-100">
+            <div class="mx-auto text-dark nxt justify-content-between ">
+                Search Our Catalog        <svg width="40" height="40" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path opacity="0.8" d="M50 35.1562V2.34375C50 1.04492 48.8058 0 47.3214 0H10.7143C4.79911 0 0 4.19922 0 9.375V40.625C0 45.8008 4.79911 50 10.7143 50H47.3214C48.8058 50 50 48.9551 50 47.6562V46.0938C50 45.3613 49.6094 44.6973 49.0067 44.2676C48.5379 42.7637 48.5379 38.4766 49.0067 36.9727C49.6094 36.5527 50 35.8887 50 35.1562ZM14.2857 13.0859C14.2857 12.7637 14.5871 12.5 14.9554 12.5H38.6161C38.9844 12.5 39.2857 12.7637 39.2857 13.0859V15.0391C39.2857 15.3613 38.9844 15.625 38.6161 15.625H14.9554C14.5871 15.625 14.2857 15.3613 14.2857 15.0391V13.0859ZM14.2857 19.3359C14.2857 19.0137 14.5871 18.75 14.9554 18.75H38.6161C38.9844 18.75 39.2857 19.0137 39.2857 19.3359V21.2891C39.2857 21.6113 38.9844 21.875 38.6161 21.875H14.9554C14.5871 21.875 14.2857 21.6113 14.2857 21.2891V19.3359ZM42.567 43.75H10.7143C8.73884 43.75 7.14286 42.3535 7.14286 40.625C7.14286 38.9062 8.75 37.5 10.7143 37.5H42.567C42.3549 39.1699 42.3549 42.0801 42.567 43.75Z" fill="black" />
+                </svg>
+            </div>
+        </a>
+
+    </div>
+</div>
+                <div class="col-sm-4">
+                    <div class="button-0 mt-3 bg-yellow  ">
+                        <a class="text-decoration-none" href="#">
+                            <div class="mx-auto text-dark nxt justify-content-between ">
+                                See Whats Happening        <svg width="40" height="40" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path opacity="0.8" d="M50 35.1562V2.34375C50 1.04492 48.8058 0 47.3214 0H10.7143C4.79911 0 0 4.19922 0 9.375V40.625C0 45.8008 4.79911 50 10.7143 50H47.3214C48.8058 50 50 48.9551 50 47.6562V46.0938C50 45.3613 49.6094 44.6973 49.0067 44.2676C48.5379 42.7637 48.5379 38.4766 49.0067 36.9727C49.6094 36.5527 50 35.8887 50 35.1562ZM14.2857 13.0859C14.2857 12.7637 14.5871 12.5 14.9554 12.5H38.6161C38.9844 12.5 39.2857 12.7637 39.2857 13.0859V15.0391C39.2857 15.3613 38.9844 15.625 38.6161 15.625H14.9554C14.5871 15.625 14.2857 15.3613 14.2857 15.0391V13.0859ZM14.2857 19.3359C14.2857 19.0137 14.5871 18.75 14.9554 18.75H38.6161C38.9844 18.75 39.2857 19.0137 39.2857 19.3359V21.2891C39.2857 21.6113 38.9844 21.875 38.6161 21.875H14.9554C14.5871 21.875 14.2857 21.6113 14.2857 21.2891V19.3359ZM42.567 43.75H10.7143C8.73884 43.75 7.14286 42.3535 7.14286 40.625C7.14286 38.9062 8.75 37.5 10.7143 37.5H42.567C42.3549 39.1699 42.3549 42.0801 42.567 43.75Z" fill="black" />
+                                </svg>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+                                <div class=" mt-5   mx-auto col-sm-11">
+                                    <div class="w-100 bg-cream">
+                                        <div class="d-flex justify-content-around "><p class=" font-29px mt-2 text-decoration-underline style-NewRoman">Online Resources</p></div>
+                                        <div class="ml-4 mb-2">
+                                            <div class="section-border justify-content-sm-center " style="width:100px !important; padding-top:0.8rem;">
+                                                <div class="mx-auto">
+                                                    <p class="d-flex justify-content-evenly style-NewRoman ">Resources</p>
+                                                </div>
+
+                                            </div>
+                                            <div class="mt-4">
+                                                <div class="d-lg-flex mb-5">
+                                                    <div class="mr-2 mb-2">
+
+                                                        <img src="~/images/Article-1.jpg" alt="Library img" class="img-articles" style="">
+
+
+                                                    </div>
+                                                    <div class=" mb-2">
+                                        <a asp-controller="GenResearches" asp-action="Index" class="text-decoration-underline text-dark font-20px style-NewRoman">General research</a>
+                                                        <div class="mt-1 me-1">
+                                                            <span class="style-NewRoman">
+                                                                Giving the fragmentation of the trading service both in term of service providers and system,
+                                                                Operational risk and its mitigation is a pertienent topic right now. The new regulatory enviroment is forcing broker dealers to adhere to strict operating and reporting standards
+                                                                .....
+                                                            </span>
+                                                        </div>
+                                                        <a asp-controller="GenResearches" asp-action="Index">
+                                                            <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M50 91.667C73.0118 91.667 91.6667 73.0122 91.6667 50.0003C91.6667 26.9884 73.0118 8.33362 50 8.33362C26.9881 8.33362 8.33331 26.9884 8.33331 50.0003C8.33331 73.0122 26.9881 91.667 50 91.667Z" stroke="#719E34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path d="M50 66.667L66.6667 50.0003L50 33.3336" stroke="#719E34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path d="M33.3333 50H66.6666" stroke="#719E34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                            </svg>
+                                                        </a>
+
+                                                    </div>
+                                                </div>
+                                                <div class="d-lg-flex mb-5">
+                                                    <div class="mb-2 mr-2">
+
+                                                        <img src="~/images/StudentResearch.png" alt="Library img" class="img-articles" style="">
+
+
+                                                    </div>
+                                                    <div class="mb-2">
+                                                        <a class="text-decoration-underline text-dark font-20px style-NewRoman" href="#">Student Research</a>
+                                                        <div class="mt-1 me-1">
+                                                            <span class="style-NewRoman">
+                                                                Lagos is the largest in Nigeria trading service both in term of service providers and system,
+                                                                Operational risk and its mitigation is a pertienent topic right now. The new regulatory enviroment is forcing broker dealers to adhere to strict operating and reporting standards
+                                                                .....
+                                                            </span>
+                                                        </div>
+                                                        <a href="#">
+                                                            <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M50 91.667C73.0118 91.667 91.6667 73.0122 91.6667 50.0003C91.6667 26.9884 73.0118 8.33362 50 8.33362C26.9881 8.33362 8.33331 26.9884 8.33331 50.0003C8.33331 73.0122 26.9881 91.667 50 91.667Z" stroke="#719E34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path d="M50 66.667L66.6667 50.0003L50 33.3336" stroke="#719E34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path d="M33.3333 50H66.6666" stroke="#719E34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                            </svg>
+                                                        </a>
+                                                    </div>
+
+                                                </div>
+                                                <div class="d-lg-flex mb-5">
+                                                    <div class="mr-2 mb-2">
+
+                                                        <img src="~/images/Article-3.jpg" alt="Library img" class="img-articles" style="">
+
+
+                                                    </div>
+                                                    <div class="mb-2">
+                                                        <a class="text-decoration-underline text-dark font-20px style-NewRoman" href="#">Online Learning</a>
+                                                        <div class="mt-1 me-1">
+                                                            <span class="style-NewRoman">
+                                                                Lagos is the largest in Nigeria trading service both in term of service providers and system,
+                                                                Operational risk and its mitigation is a pertienent topic right now. The new regulatory enviroment is forcing broker dealers to adhere to strict operating and reporting standards
+                                                                .....
+                                                            </span>
+
+                                                        </div>
+                                                        <a href="#">
+                                                            <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M50 91.667C73.0118 91.667 91.6667 73.0122 91.6667 50.0003C91.6667 26.9884 73.0118 8.33362 50 8.33362C26.9881 8.33362 8.33331 26.9884 8.33331 50.0003C8.33331 73.0122 26.9881 91.667 50 91.667Z" stroke="#719E34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path d="M50 66.667L66.6667 50.0003L50 33.3336" stroke="#719E34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path d="M33.3333 50H66.6666" stroke="#719E34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                            </svg>
+                                                        </a>
+                                                    </div>
+
+                                                </div>
+                                                <div class="d-lg-flex mb-5">
+                                                    <div class="mb-2 mr-2">
+
+                                                        <img src="~/images/Magazinenewspaper.png" alt="Library img" class="img-articles" style="">
+
+
+                                                    </div>
+                                                    <div class="mb-2">
+                                                        <a class="text-decoration-underline text-dark font-20px style-NewRoman" href="#">Magazine & Newspapers</a>
+                                                        <div class="mt-1 me-1">
+                                                            <span class="style-NewRoman">
+                                                                Lagos is the largest in Nigeria trading service both in term of service providers and system,
+                                                                Operational risk and its mitigation is a pertienent topic right now. The new regulatory enviroment is forcing broker dealers to adhere to strict operating and reporting standards
+                                                                .....
+                                                            </span>
+                                                        </div>
+                                                        <a href="#">
+                                                            <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M50 91.667C73.0118 91.667 91.6667 73.0122 91.6667 50.0003C91.6667 26.9884 73.0118 8.33362 50 8.33362C26.9881 8.33362 8.33331 26.9884 8.33331 50.0003C8.33331 73.0122 26.9881 91.667 50 91.667Z" stroke="#719E34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path d="M50 66.667L66.6667 50.0003L50 33.3336" stroke="#719E34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path d="M33.3333 50H66.6666" stroke="#719E34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                            </svg>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="d-lg-flex mb-5">
+                                                    <div class="mr-2 mb-2">
+
+                                                        <img src="~/images/Articles.png" alt="Library img" class="img-articles" style="">
+
+
+                                                    </div>
+                                                    <div class="mb-2">
+                                                        <a class="text-decoration-underline text-dark font-20px style-NewRoman" href="#">Articles</a>
+                                                        <div class="mt-1 me-1">
+                                                            <span class="style-NewRoman">
+                                                                Lagos is the largest in Nigeria trading service both in term of service providers and system,
+                                                                Operational risk and its mitigation is a pertienent topic right now. The new regulatory enviroment is forcing broker dealers to adhere to strict operating and reporting standards
+                                                                .....
+                                                            </span>
+
+                                                        </div>
+                                                        <a href="#">
+                                                            <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M50 91.667C73.0118 91.667 91.6667 73.0122 91.6667 50.0003C91.6667 26.9884 73.0118 8.33362 50 8.33362C26.9881 8.33362 8.33331 26.9884 8.33331 50.0003C8.33331 73.0122 26.9881 91.667 50 91.667Z" stroke="#719E34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path d="M50 66.667L66.6667 50.0003L50 33.3336" stroke="#719E34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path d="M33.3333 50H66.6666" stroke="#719E34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                            </svg>
+                                                        </a>
+                                                    </div>
+
+                                                </div>
+
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                }
+                            else if ((signInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Employee"))))
+                            {
+                <div class="col-sm-4">
+                    <div class="button-0 mt-3 bg-blue  ">
+                        <a asp-controller="Catalog" asp-action="Index" class="text-decoration-none w-100" >
+                            <div class="mx-auto text-dark nxt justify-content-between ">
+                                Search Our Catalog        <svg width="40" height="40" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path opacity="0.8" d="M50 35.1562V2.34375C50 1.04492 48.8058 0 47.3214 0H10.7143C4.79911 0 0 4.19922 0 9.375V40.625C0 45.8008 4.79911 50 10.7143 50H47.3214C48.8058 50 50 48.9551 50 47.6562V46.0938C50 45.3613 49.6094 44.6973 49.0067 44.2676C48.5379 42.7637 48.5379 38.4766 49.0067 36.9727C49.6094 36.5527 50 35.8887 50 35.1562ZM14.2857 13.0859C14.2857 12.7637 14.5871 12.5 14.9554 12.5H38.6161C38.9844 12.5 39.2857 12.7637 39.2857 13.0859V15.0391C39.2857 15.3613 38.9844 15.625 38.6161 15.625H14.9554C14.5871 15.625 14.2857 15.3613 14.2857 15.0391V13.0859ZM14.2857 19.3359C14.2857 19.0137 14.5871 18.75 14.9554 18.75H38.6161C38.9844 18.75 39.2857 19.0137 39.2857 19.3359V21.2891C39.2857 21.6113 38.9844 21.875 38.6161 21.875H14.9554C14.5871 21.875 14.2857 21.6113 14.2857 21.2891V19.3359ZM42.567 43.75H10.7143C8.73884 43.75 7.14286 42.3535 7.14286 40.625C7.14286 38.9062 8.75 37.5 10.7143 37.5H42.567C42.3549 39.1699 42.3549 42.0801 42.567 43.75Z" fill="black" />
+                                </svg>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+                                <div class="col-sm-4">
+                                    <div class="button-0 mt-3 bg-yellow  ">
+                                        <a class="text-decoration-none" href="#">
+                                            <div class="mx-auto text-dark nxt justify-content-between ">
+                                                See Whats Happening        <svg width="40" height="40" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path opacity="0.8" d="M50 35.1562V2.34375C50 1.04492 48.8058 0 47.3214 0H10.7143C4.79911 0 0 4.19922 0 9.375V40.625C0 45.8008 4.79911 50 10.7143 50H47.3214C48.8058 50 50 48.9551 50 47.6562V46.0938C50 45.3613 49.6094 44.6973 49.0067 44.2676C48.5379 42.7637 48.5379 38.4766 49.0067 36.9727C49.6094 36.5527 50 35.8887 50 35.1562ZM14.2857 13.0859C14.2857 12.7637 14.5871 12.5 14.9554 12.5H38.6161C38.9844 12.5 39.2857 12.7637 39.2857 13.0859V15.0391C39.2857 15.3613 38.9844 15.625 38.6161 15.625H14.9554C14.5871 15.625 14.2857 15.3613 14.2857 15.0391V13.0859ZM14.2857 19.3359C14.2857 19.0137 14.5871 18.75 14.9554 18.75H38.6161C38.9844 18.75 39.2857 19.0137 39.2857 19.3359V21.2891C39.2857 21.6113 38.9844 21.875 38.6161 21.875H14.9554C14.5871 21.875 14.2857 21.6113 14.2857 21.2891V19.3359ZM42.567 43.75H10.7143C8.73884 43.75 7.14286 42.3535 7.14286 40.625C7.14286 38.9062 8.75 37.5 10.7143 37.5H42.567C42.3549 39.1699 42.3549 42.0801 42.567 43.75Z" fill="black" />
+                                                </svg>
+                                            </div>
+                                        </a>
+
+                                    </div>
+                                </div>
+                               
+                             }
+        </div>
+    </div>
+
+
+
+
+
+    <div class="row">
+
+        @if (!signInManager.IsSignedIn(User)
+  || (signInManager.IsSignedIn(User) && User.IsInRole("Patron") && !User.IsInRole("Admin") && !User.IsInRole("Employee"))
+  || (signInManager.IsSignedIn(User) && !User.IsInRole("Admin") && !User.IsInRole("Employee") && !User.IsInRole("Patron")))
+        {
+    <div class="col-sm-6 col-md-4 mt-4 offset-md-2">
+        <figure>
+            <a asp-controller="Catalog" asp-action="Index"><img class="img-fluid border rounded" src="images/old-books.jpg" asp-append-version="true" alt="Books"></a>
+            <figcaption class="text-center">Library Catalog</figcaption>
+        </figure>
+
+        <div class="text-center">
+            <a asp-controller="Catalog" asp-action="Index">View Catalog</a>
+        </div>
+    </div> }
+
+else if ((signInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Employee"))))
+{
+    <div class=" mt-5   mx-auto col-sm-11">
+        <div class="w-100 bg-cream">
+            <div class="d-flex justify-content-around "><p class=" font-29px mt-2 text-decoration-underline style-NewRoman">Online Resources</p></div>
+            <div class="ml-4 mb-2">
+                <div class="section-border justify-content-sm-center " style="width:100px !important; padding-top:0.8rem;">
+                    <div class="mx-auto">
+                        <p class="d-flex justify-content-evenly style-NewRoman ">Resources</p>
+                    </div>
+
+                </div>
+                <div class="mt-4">
+                    <div class="d-lg-flex mb-5">
+                        <div class="mr-2 mb-2">
+
+                            <img src="~/images/Article-1.jpg" alt="Library img" class="img-articles" style="">
+
+
+                        </div>
+                        <div class=" mb-2">
+                                    <a asp-controller="GenResearches" asp-action="Index" class="text-decoration-underline text-dark font-20px style-NewRoman">General research</a>
+                            <div class="mt-1 me-1">
+                                <span class="style-NewRoman">
+                                    Giving the fragmentation of the trading service both in term of service providers and system,
+                                    Operational risk and its mitigation is a pertienent topic right now. The new regulatory enviroment is forcing broker dealers to adhere to strict operating and reporting standards
+                                    .....
+                                </span>
+                            </div>
+                                    <a asp-controller="GenResearches" asp-action="Index">
+                                <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M50 91.667C73.0118 91.667 91.6667 73.0122 91.6667 50.0003C91.6667 26.9884 73.0118 8.33362 50 8.33362C26.9881 8.33362 8.33331 26.9884 8.33331 50.0003C8.33331 73.0122 26.9881 91.667 50 91.667Z" stroke="#719E34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M50 66.667L66.6667 50.0003L50 33.3336" stroke="#719E34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M33.3333 50H66.6666" stroke="#719E34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </a>
+
+                        </div>
+                    </div>
+                    <div class="d-lg-flex mb-5">
+                        <div class="mb-2 mr-2">
+
+                            <img src="~/images/StudentResearch.png" alt="Library img" class="img-articles" style="">
+
+
+                        </div>
+                        <div class="mb-2">
+                            <a class="text-decoration-underline text-dark font-20px style-NewRoman" href="#">Student Research</a>
+                            <div class="mt-1 me-1">
+                                <span class="style-NewRoman">
+                                    Lagos is the largest in Nigeria trading service both in term of service providers and system,
+                                    Operational risk and its mitigation is a pertienent topic right now. The new regulatory enviroment is forcing broker dealers to adhere to strict operating and reporting standards
+                                    .....
+                                </span>
+                            </div>
+                            <a href="#">
+                                <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M50 91.667C73.0118 91.667 91.6667 73.0122 91.6667 50.0003C91.6667 26.9884 73.0118 8.33362 50 8.33362C26.9881 8.33362 8.33331 26.9884 8.33331 50.0003C8.33331 73.0122 26.9881 91.667 50 91.667Z" stroke="#719E34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M50 66.667L66.6667 50.0003L50 33.3336" stroke="#719E34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M33.3333 50H66.6666" stroke="#719E34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </a>
+                        </div>
+
+                    </div>
+                    <div class="d-lg-flex mb-5">
+                        <div class="mr-2 mb-2">
+
+                            <img src="~/images/Article-3.jpg" alt="Library img" class="img-articles" style="">
+
+
+                        </div>
+                        <div class="mb-2">
+                            <a class="text-decoration-underline text-dark font-20px style-NewRoman" href="#">Online Learning</a>
+                            <div class="mt-1 me-1">
+                                <span class="style-NewRoman">
+                                    Lagos is the largest in Nigeria trading service both in term of service providers and system,
+                                    Operational risk and its mitigation is a pertienent topic right now. The new regulatory enviroment is forcing broker dealers to adhere to strict operating and reporting standards
+                                    .....
+                                </span>
+
+                            </div>
+                            <a href="#">
+                                <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M50 91.667C73.0118 91.667 91.6667 73.0122 91.6667 50.0003C91.6667 26.9884 73.0118 8.33362 50 8.33362C26.9881 8.33362 8.33331 26.9884 8.33331 50.0003C8.33331 73.0122 26.9881 91.667 50 91.667Z" stroke="#719E34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M50 66.667L66.6667 50.0003L50 33.3336" stroke="#719E34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M33.3333 50H66.6666" stroke="#719E34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </a>
+                        </div>
+
+                    </div>
+                    <div class="d-lg-flex mb-5">
+                        <div class="mb-2 mr-2">
+
+                            <img src="~/images/Magazinenewspaper.png" alt="Library img" class="img-articles" style="">
+
+
+                        </div>
+                        <div class="mb-2">
+                            <a class="text-decoration-underline text-dark font-20px style-NewRoman" href="#">Magazine & Newspapers</a>
+                            <div class="mt-1 me-1">
+                                <span class="style-NewRoman">
+                                    Lagos is the largest in Nigeria trading service both in term of service providers and system,
+                                    Operational risk and its mitigation is a pertienent topic right now. The new regulatory enviroment is forcing broker dealers to adhere to strict operating and reporting standards
+                                    .....
+                                </span>
+                            </div>
+                            <a href="#">
+                                <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M50 91.667C73.0118 91.667 91.6667 73.0122 91.6667 50.0003C91.6667 26.9884 73.0118 8.33362 50 8.33362C26.9881 8.33362 8.33331 26.9884 8.33331 50.0003C8.33331 73.0122 26.9881 91.667 50 91.667Z" stroke="#719E34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M50 66.667L66.6667 50.0003L50 33.3336" stroke="#719E34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M33.3333 50H66.6666" stroke="#719E34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="d-lg-flex mb-5">
+                        <div class="mr-2 mb-2">
+
+                            <img src="~/images/Articles.png" alt="Library img" class="img-articles" style="">
+
+
+                        </div>
+                        <div class="mb-2">
+                            <a class="text-decoration-underline text-dark font-20px style-NewRoman" href="#">Articles</a>
+                            <div class="mt-1 me-1">
+                                <span class="style-NewRoman">
+                                    Lagos is the largest in Nigeria trading service both in term of service providers and system,
+                                    Operational risk and its mitigation is a pertienent topic right now. The new regulatory enviroment is forcing broker dealers to adhere to strict operating and reporting standards
+                                    .....
+                                </span>
+
+                            </div>
+                            <a href="#">
+                                <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M50 91.667C73.0118 91.667 91.6667 73.0122 91.6667 50.0003C91.6667 26.9884 73.0118 8.33362 50 8.33362C26.9881 8.33362 8.33331 26.9884 8.33331 50.0003C8.33331 73.0122 26.9881 91.667 50 91.667Z" stroke="#719E34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M50 66.667L66.6667 50.0003L50 33.3336" stroke="#719E34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M33.3333 50H66.6666" stroke="#719E34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </a>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+                    <div class="col-sm-6 col-md-4 mt-4">
+                        <figure>
+                            <a asp-controller="Catalog" asp-action="Index"><img class="img-fluid border rounded" src="images/old-books.jpg" asp-append-version="true" alt="Books"></a>
+                            <figcaption class="text-center">Library Catalog</figcaption>
+                        </figure>
+                        <div class="text-center">
+                            <a asp-controller="Catalog" asp-action="Index">View Catalog</a>
+                        </div>
+                    </div>}
+        @if (signInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Employee")))
+        {
+    <div class="col-sm-6 offset-sm-3 col-md-4 offset-md-0 mt-4">
+
+        <figure>
+            <a asp-controller="Patron" asp-action="Index"><img class="img-fluid border rounded" src="images/patrons.jpg" asp-append-version="true" alt="Patrons"></a>
+            <figcaption class="text-center">Patrons</figcaption>
+        </figure>
+
+        <div class="text-center">
+            <a asp-controller="Patron" asp-action="Index">View Patron Index</a>
+        </div>
+
+    </div>}
+
+        <div class="col-sm-6 col-md-4 mt-4">
+
+            <figure>
+                <a asp-controller="Branch" asp-action="Index"><img class="img-fluid border rounded" src="images/bldg.jpg" asp-append-version="true" alt="Branches"></a>
+                <figcaption class="text-center">Branches</figcaption>
+            </figure>
+
+            <div class="text-center">
+                <a asp-controller="Branch" asp-action="Index">View Branch Index</a>
+            </div>
+        </div>
+
+
+    </div>
+</div> <div class=" mt-4 mx-auto col-sm-11">
+    <div class=" w-100 mt-1">
+        <div class=" row justify-content-between">
+            <div class="bg-yellow mt-3 col-sm-5-mod">
+                <div class="d-flex justify-content-center"><p class="mt-3 font-20px font-md-48px"> <strong>Sign up for our email newsletters</strong></p> </div>
+                <div class="d-flex justify-content-center">
+                    <p class="mt-3 w-57 text-center ">
+                        Get the latest about Library events, new programs and services
+                        and other Library news delivered to your inbox.
+                    </p>
+                </div>
+
+                <div class="mt-2 d-flex justify-content-center " style="margin-bottom:5rem;">
+                    <!-- Trigger/Open The Modal -->
+                    <button class="mt-2 text-white bg-black-mod button-1" id="myBtn">Sign Up</button>
+                </div>
+
+                <!-- The Modal -->
+                <div id="myModal" class="modal">
+
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <p>
+                            Get news of various categories to the email of your choice and be current on the happenings around
+                            the globe
+                        </p>
+                        <div class="me-md-2 d-lg-flex">
+                            <div class="row">
+                                <div class="form-group mb-2">
+                                    <label>First Name</label>
+                                    <div class="col-sm-12">
+                                        <input class="form-control text-box single-line valid ">
+                                    </div>
+
+                                </div>
+                                <div class="form-group mb-2">
+                                    <label>Email Address</label>
+                                    <div class="col-sm-12">
+                                        <input class="form-control text-box single-line valid">
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group mb-2">
+                                    <label>Last Name</label>
+                                    <div class="col-sm-12">
+                                        <input class="form-control text-box single-line valid ">
+                                    </div>
+
+                                </div>
+                                <div class="form-group mb-2">
+                                    <label>Confirm Email Address</label>
+                                    <div class="col-sm-12">
+                                        <input class="form-control text-box single-line valid">
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="">
+                            <button class="mt-3 text-white border-mtu-blue bg-blue col-sm-12" id="myBtn">subscribe</button>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="bg-blue mt-3 col-sm-5-mod">
+                <div class="d-flex justify-content-center"><p class="mt-3 font-20px font-md-48px"><strong>Ask Us</strong> </p> </div>
+                <div class="d-flex justify-content-center"> <a class=" text-dark mt-3 w-57 text-center text-decoration-none" href="#">If you need help or have a question or suggestion, we want to hear from you. You can reach Library staff by chat, email or phone during open hours.</a></div>
+                <div class="d-flex justify-content-end">
+                    <a href="#">
+                        <svg width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M49.9999 91.6668C73.0118 91.6668 91.6666 73.012 91.6666 50.0002C91.6666 26.9883 73.0118 8.3335 49.9999 8.3335C26.9881 8.3335 8.33325 26.9883 8.33325 50.0002C8.33325 73.012 26.9881 91.6668 49.9999 91.6668Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M50 66.6668L66.6667 50.0002L50 33.3335" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M33.3333 50H66.6666" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+        
+<script>
+
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+

@@ -1,0 +1,112 @@
+@model PaginatedList<Library.Models.Catalog.AssetIndexListingViewModel>
+
+@inject SignInManager<User> signInManager
+
+@{ ViewBag.Title = "Library catalog";
+    ViewBag.Create = "Create new item"; }
+<div class="overflow-hidden">
+        <div class=" mb-2">
+            <img src="~/images/Catalogimg.jpg" alt="Library img" class="h-mobile-" style="height:556px; width:100% !important;">
+        </div>
+        <div class="bg-mtu-green w-100 searchCatalog">
+            <div class="row">
+                <div class="col-md-4 col-6 p-2 mx-auto">
+
+
+                    <form method="get">
+                        <div class="input-group">
+                            <input class="form-control" name="searchString" placeholder="Search by title or author">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn bg-blue">
+                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
+                                        <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        @if (signInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Employee")))
+        {
+<div class="row">
+    <div class="col-md-3 mr-auto text-center p-2">
+        <a asp-controller="Catalog" asp-action="Create" class="btn btn-primary" style="width: auto">@ViewBag.Create</a>
+    </div>
+</div>}
+    
+
+    <div class="ml-4 mt-3 section-border2 justify-content-sm-center " style="width:100px !important;">
+        <div class="mx-auto">
+            <a href="/Catalog" class="d-flex p-2 justify-content-evenly style-NewRoman " style="color: #719E34;">Catalog</a>
+        </div>
+
+    </div>
+
+
+    <div class="table-responsive">
+        <table class="table table-sm mt-3" id="catalogIndexTable">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Author / Director</th>
+                    <th>Format</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var asset in @Model)
+                {
+                    var picturePath = asset.ImageUrl ?? "/images/default.png";
+
+    <tr>
+        <td class="">
+            <div class="" style="width:128px; height:auto">
+                <a asp-controller="Catalog" asp-action="Detail" asp-route-id="@asset.Id">
+                    <img src="@picturePath" asp-append-version="true" class="imageCell" alt="book" />
+                </a>
+            </div>
+        </td>
+        <td class="">@asset.Title</td>
+        <td class="">@asset.AuthorOrDirector</td>
+        <td class="">@asset.AuthorOrDirector</td>
+    </tr>
+}
+
+                <tr>
+                    <td id="paginationDataCell">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="text-right mr-3" id="paginationDataCell">
+            @{ var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+                var nextDisabled = !Model.HasNextPage ? "disabled" : ""; }
+
+            <a asp-action="Index"
+               asp-route-pageNumber="@(Model.PageIndex - 1)"
+               asp-route-currentFilter="@ViewData["CurrentFilter"]"
+               class="btn mr-1 @prevDisabled">
+                <svg width="40" height="40" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M39.9998 73.3332C58.4093 73.3332 73.3332 58.4093 73.3332 39.9998C73.3332 21.5903 58.4093 6.6665 39.9998 6.6665C21.5903 6.6665 6.6665 21.5903 6.6665 39.9998C6.6665 58.4093 21.5903 73.3332 39.9998 73.3332Z" stroke="#719E34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M39.9998 26.6665L26.6665 39.9998L39.9998 53.3332" stroke="#719E34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M53.3332 40H26.6665" stroke="#719E34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+
+            </a>
+            <a asp-action="Index"
+               asp-route-pageNumber="@(Model.PageIndex + 1)"
+               asp-route-currentFilter="@ViewData["CurrentFilter"]"
+               class="btn  @nextDisabled">
+                <svg width="40" height="40" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M39.9998 73.3332C58.4093 73.3332 73.3332 58.4093 73.3332 39.9998C73.3332 21.5903 58.4093 6.6665 39.9998 6.6665C21.5903 6.6665 6.6665 21.5903 6.6665 39.9998C6.6665 58.4093 21.5903 73.3332 39.9998 73.3332Z" stroke="#719E34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M40 53.3332L53.3333 39.9998L40 26.6665" stroke="#719E34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M26.6665 40H53.3332" stroke="#719E34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+﻿@model IEnumerable<IdentityRole>
+
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService authorizationService
+
+@{ ViewBag.Title = "List of roles"; }
+
+<div class="mt-7 overflow-hidden">
+    <div class="col-sm-8 mx-auto account-container style-NewRoman">
+        <h2 class="text-center mt-4">All roles</h2>
+        <hr class="whiteLine" />
+
+        @if (Model.Any())
+        {
+    <div class="col-md-3 mt-5 mb-3 mr-auto">
+        <a class="btn btn-primary" style="width:auto" asp-controller="Administration" asp-action="CreateRole">
+            Add new role
+        </a>
+    </div> foreach (var role in Model)
+    {
+    <div class="card text-dark text-center mt-5 mb-3">
+        <div class="card-header">
+            Role Id: @role.Id
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">@role.Name</h5>
+        </div>
+        <div class="card-footer">
+            <form asp-action="DeleteRole" asp-route-id="@role.Id" method="post">
+                <a asp-controller="Administration" asp-action="EditRole" asp-route-id="@role.Id" class="btn btn-primary">Edit</a>
+                @if ((await authorizationService.AuthorizeAsync(User, "DeleteRolePolicy")).Succeeded)
+                {
+    <span id="deleteSpan_@role.Id">
+        <a href="#" class="btn btn-danger" onclick="confirmDelete('@role.Id', true)">Delete</a>
+    </span>             }
+
+                <span id="confirmDeleteSpan_@role.Id" style="display: none">
+                    <span>Are you sure you want to delete?</span>
+                    <button type="submit" class="btn btn-danger">Yes</button>
+                    <a href="#" class="btn btn-primary" onclick="confirmDelete('@role.Id', false)">No</a>
+                </span>
+            </form>
+        </div>
+    </div> }
+
+}
+else
+{
+    <div class="card">
+        <div class="card-header">
+            No roles created yet
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">
+                Use the button below to create a role
+            </h5>
+            <a class="btn btn-primary" asp-controller="Administration"
+               asp-action="CreateRole" style="width:auto">
+                Create role
+            </a>
+        </div>
+    </div>}
+
+        @section Scripts
+{
+            <script src="~/js/site.js"></script>
+        }
+    </div>
+
+</div>

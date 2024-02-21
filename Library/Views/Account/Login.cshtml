@@ -1,0 +1,89 @@
+﻿@model Library.Models.Account.LoginViewModel
+
+@{
+    ViewBag.Title = "Sign in";
+}
+<div class="h-100 w-100  overflow-hidden">
+    @*@section TopHeaders
+{
+
+    }*@
+    <div class="position-fixed">
+        <img src="~/images/Backgroundimage.png" class="" style="height:100%;" />
+    </div>
+   
+    
+    <div class="mt-9">
+        <div class="col-sm-7 mx-auto">
+            <form method="post" asp-controller="Account" asp-action="Login" asp-route-returnUrl="@ViewData["ReturnUrl"]">
+                <div asp-validation-summary="All" class="text-danger text-center"></div>
+                <div class="account-container">
+                    <div class="form-group mt-4 row">
+                        <div class="col-sm-8 mx-auto text-center mt-4">
+                            <label>Login to your Acount</label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-8 mx-auto text-center mt-2">
+                            <svg width="50" height="50" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M79.1667 45.8333H20.8333C16.231 45.8333 12.5 49.5643 12.5 54.1666V83.3333C12.5 87.9357 16.231 91.6666 20.8333 91.6666H79.1667C83.769 91.6666 87.5 87.9357 87.5 83.3333V54.1666C87.5 49.5643 83.769 45.8333 79.1667 45.8333Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M29.166 45.8333V29.1666C29.166 23.6413 31.3609 18.3423 35.268 14.4353C39.175 10.5282 44.474 8.33331 49.9993 8.33331C55.5247 8.33331 60.8237 10.5282 64.7307 14.4353C68.6377 18.3423 70.8327 23.6413 70.8327 29.1666V45.8333" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                       
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-8 mx-auto mt-3">
+                            <label asp-for="Email"></label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-8 mx-auto">
+                            <label asp-for="Password"></label>
+                            <input asp-for="Password" class="form-control" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-8 mx-auto">
+                            <div class="form-check">
+                                <label class="form-check-label" asp-for="RememberMe">
+                                    <input class="form-check-input" asp-for="RememberMe" />
+                                    @Html.DisplayNameFor(model => model.RememberMe)
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-8 mx-auto">
+                            <input type="submit" value="Sign In" class="btn w-100 bg-blue" />
+                            
+                        </div>
+
+
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-8 mx-auto text-right">
+                            <div class="mt-3 mb-4">
+                                <a class="text-right" asp-action="ForgotPassword">Forgot password?</a>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+
+
+            </form>
+        </div>
+
+       
+    </div>
+</div>

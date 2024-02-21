@@ -1,0 +1,10 @@
+Download the project
+Open project with Visual Studio and wait for dependencies to be resolved
+Set Library as Startup project
+Open Package Manager Console and make sure that Default project is LibraryData
+Run the following command: update-database
+Populate database with demo data:
+    - Go to SQLQuery1
+    - Copy the contents of Library_DemoData.sql file
+    - Open SQL Server Management Studio and connect to server
+    - Click New Query on the top bar, paste data which was copied and click Execute (below the New Query button)
